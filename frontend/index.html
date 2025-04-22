@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Production Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 22px;
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 18px;
+      text-align: center;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 15px;
+            border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      width: 100%;
+      padding: 6px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+           cursor: pointer;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Production Dashboard</h1>
+  <h2>Add Shift Data</h2>
+
+  <form action="/add_shift_data/" method="POST">
+    <label for="line_id">Line ID:</label>
+    <input type="number" id="line_id" name="line_id" required />
+
+    <label for="product_id">Product ID:</label>
+    <input type="number" id="product_id" name="product_id" required />
+
+    <label for="shift">Shift (A, B, or C):</label>
+    <input type="text" id="shift" name="shift" required />
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required />
+
+    <label for="production_quantity">Production Quantity:</label>
+    <input type="number" id="production_quantity" name="production_quantity" required />
+    
+        <label for="line_speed">Line Speed:</label>
+    <input type="number" step="0.1" id="line_speed" name="line_speed" required />
+
+    <label for="energy_consumed">Energy Consumed (kWh):</label>
+    <input type="number" step="0.1" id="energy_consumed" name="energy_consumed" required />
+
+    <input type="submit" value="Submit Shift Data" />
+  </form>
+</body>
+</html>

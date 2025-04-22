@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Production Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      width: 100% !important;
+      height: 350px !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Production Dashboard</h1>
+    <canvas id="combinedChart"></canvas>
+  </div>
+
+  <script>
+    const dummyData = {
+      labels: ['2025-04-01', '2025-04-02', '2025-04-03', '2025-04-04', '2025-04-05'],
+      production: [120, 150, 130, 160, 140],
+      energy: [45, 50, 48, 55, 52],
+      lineSpeed: [80, 82, 78, 85, 83]
+    };
+
+    const ctx = document.getElementById('combinedChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: dummyData.labels,
+        datasets: [
+          {
+            label: 'Production (Units)',
+            data: dummyData.production,
+            borderColor: '#007bff',
+            backgroundColor: '#007bff44',
+            tension: 0.3,
+            fill: false
+          },
+          {
+            label: 'Energy (kWh)',
+            data: dummyData.energy,
+            borderColor: '#28a745',
+            backgroundColor: '#28a74544',
+            tension: 0.3,
+            fill: false
+          },
+          {
+            label: 'Line Speed (Units/hr)',
+            data: dummyData.lineSpeed,
+            borderColor: '#dc3545',
+            backgroundColor: '#dc354544',
+            tension: 0.3,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: {
+          padding: 10
+        },
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: 'Production KPIs (Product 1)'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#000',
+              font: {
+                size: 12
+              }
+            }
+          },
+          x: {
+            ticks: {
+              color: '#000',
+              font: {
+                size: 12
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
